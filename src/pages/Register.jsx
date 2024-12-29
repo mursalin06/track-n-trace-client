@@ -1,12 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import { useContext, useState } from "react";
 import { updateProfile } from "firebase/auth";
 import { Bounce, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
 
 const Register = () => {
-
+    const navigate = useNavigate();
     const { createUser } = useContext(AuthContext);
 
 
@@ -18,7 +19,7 @@ const Register = () => {
         const photoURL = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        
+
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
         // pass validation
         if (!passwordRegex.test(password)) {
@@ -33,7 +34,7 @@ const Register = () => {
                 progress: undefined,
                 theme: "light",
                 transition: Bounce,
-                });
+            });
             return;
         }
         // console.log(userInfo);
@@ -48,6 +49,14 @@ const Register = () => {
                     displayName: name,
                     photoURL: photoURL
                 })
+                if (user) {
+                    Swal.fire({
+                        title: "Great job!",
+                        text: "User created successfully!",
+                        icon: "success"
+                    });
+                }
+                navigate('/');
             })
             .catch(err => {
                 console.log(err)
