@@ -41,7 +41,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="navbar p-2 rounded-md bg-base-300 shadow-md">
+        <div className="navbar rounded-md bg-base-300 shadow-md px-4">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost pl-0 lg:hidden">
@@ -75,7 +75,7 @@ const Navbar = () => {
                 {/* LOG-OUT and LOGIN */}
                 {user ? <div className="flex items-center gap-5">
                     <p onClick={handleLogOut} className="text-blue-700 underline font-medium hover:text-cyan-700">Log Out</p>
-                    <span className="">
+                    <span className="tooltip tooltip-bottom" data-tip={user.displayName}>
                         <img className="w-12 h-12 rounded-full" src={user.photoURL} alt="" />
                     </span>
                 </div> : <div>
