@@ -1,6 +1,12 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
+import Swal from "sweetalert2";
 
 const Login = () => {
+
+    const navigate = useNavigate();
+    const {login, setUser} = useContext(AuthContext); 
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -8,9 +14,27 @@ const Login = () => {
 
         const email = form.email.value;
         const password = form.password.value;
-        const LoginInfo = { email, password }
+        // const LoginInfo = { email, password }
+        // console.log(LoginInfo);
 
-        console.log(LoginInfo);
+        login(email, password)
+        .then(res => {
+            const user = res.user;
+            setUser(user);
+            // console.log(user, "logged in successfully!");
+            if(user){
+                Swal.fire({
+                    title: "Good job",
+                    text: "You're logged in!",
+                    icon: "success"
+                  });
+                  navigate('/');
+            }
+            
+        })
+        .catch(error=> {
+            console.log("error while logging in", error)
+        })
     }
 
     return (
@@ -29,9 +53,9 @@ const Login = () => {
                             <span className="label-text">Password</span>
                         </label>
                         <input type="password" placeholder="password" name="password" className="input input-bordered" required />
-                        <label className="label">
+                        {/* <label className="label">
                             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                        </label>
+                        </label> */}
                     </div>
                     <p>Don't have an account ? <Link to='/register'><span className="text-green-600 underline font-bold">Register</span></Link></p>
                     <div className="form-control mt-6">

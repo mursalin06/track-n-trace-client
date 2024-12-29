@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 
 const Register = () => {
     const navigate = useNavigate();
-    const { createUser } = useContext(AuthContext);
+    const { createUser, setUser } = useContext(AuthContext);
 
 
     const handleRegister = (e) => {
@@ -43,6 +43,7 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user;
+                setUser(user)
                 // console.log(user)
                 // update users name and photo
                 updateProfile(user, {

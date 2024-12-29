@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
 
 const Navbar = () => {
+
+    const {user} = useContext(AuthContext);
+    // console.log(user)
 
     const links = (
         <>
@@ -46,14 +51,15 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {/* LOG-OUT n PROFILE */}
-                <div>
+                {/* LOG-OUT and LOGIN */}
+                {user ? <div className="flex items-center gap-5">
                     <p className="text-blue-700 underline font-medium hover:text-cyan-700">Log Out</p>
-                </div>
-                {/* LOGIN */}
-                <div>
+                    <span className="">
+                        <img className="w-12 h-12 rounded-full" src={user.photoURL} alt="" />
+                    </span>
+                </div>: <div>
                     <Link to='/login' className="btn ml-3 btn-primary btn-sm px-6">Login</Link>
-                </div>
+                </div>}
             </div>
         </div>
     );
