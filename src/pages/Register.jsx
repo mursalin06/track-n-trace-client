@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { updateProfile } from "firebase/auth";
+import { Bounce, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
 
     const { createUser } = useContext(AuthContext);
-
 
 
     const handleRegister = (e) => {
@@ -17,9 +18,26 @@ const Register = () => {
         const photoURL = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        const userInfo = { name, photoURL, email, password }
-
+        
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+        // pass validation
+        if (!passwordRegex.test(password)) {
+            // toast.error
+            toast.error("Password must have an uppercase letter, a lowercase letter, and be at least 6 characters long.", {
+                position: "bottom-right",
+                autoClose: 2500,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+                });
+            return;
+        }
         // console.log(userInfo);
+
         // Create user in firebase
         createUser(email, password)
             .then(result => {
