@@ -28,7 +28,7 @@ const Login = () => {
                         text: "You're logged in!",
                         icon: "success"
                     });
-                    navigate('/');
+                    navigate(location.state?.from || "/");
                 }
 
             })
@@ -44,26 +44,26 @@ const Login = () => {
 
     const handleGoogleSignIn = () => {
         googleSignIn()
-        .then((result)=>{
-            const user = result.user;
-            setUser(user);
-            if (user) {
+            .then((result) => {
+                const user = result.user;
+                setUser(user);
+                if (user) {
+                    Swal.fire({
+                        title: "Good job",
+                        text: "You're logged in!",
+                        icon: "success"
+                    });
+                    navigate(location.state?.from || "/");
+                }
+            })
+            .catch((error) => {
+                console.error(error, "Error occurred while signing in with google");
                 Swal.fire({
-                    title: "Good job",
-                    text: "You're logged in!",
-                    icon: "success"
+                    title: "Opps!",
+                    text: "Password or email is incorrect. Try again",
+                    icon: "error"
                 });
-                navigate('/');
-            }
-        })
-        .catch((error)=>{
-            console.error(error,"Error occurred while signing in with google");
-            Swal.fire({
-                title: "Opps!",
-                text: "Password or email is incorrect. Try again",
-                icon: "error"
-            });
-        })
+            })
     }
 
     return (
