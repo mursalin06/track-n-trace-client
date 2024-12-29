@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
+import { useContext } from "react";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
+
+    const { createUser } = useContext(AuthContext);
+
+
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -12,13 +19,27 @@ const Register = () => {
         const password = form.password.value;
         const userInfo = { name, photoURL, email, password }
 
-        console.log(userInfo);
+        // console.log(userInfo);
+        // Create user in firebase
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                // console.log(user)
+                // update users name and photo
+                updateProfile(user, {
+                    displayName: name,
+                    photoURL: photoURL
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     return (
         <div>
             <div className="hero bg-base-200 min-h-screen">
-                <div className="card bg-base-100 w-full mx-5 md:w-1/3 shadow-2xl">
+                <div className="card bg-base-100 w-full mx-5 md:w-10/12 my-6 lg:w-1/3 shadow-2xl">
                     <h2 className="text-2xl font-bold text-center pt-6">Register</h2>
                     <form onSubmit={handleRegister} className="card-body">
                         {/* NAME */}
