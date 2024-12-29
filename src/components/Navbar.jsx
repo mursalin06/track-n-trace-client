@@ -2,11 +2,17 @@ import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
 
-    const links = <>
-        <NavLink to='/'><li><a>Home</a></li></NavLink>
-        <li><a>Item 1</a></li>
-        <li><a>Item 3</a></li>
-    </>
+    const links = (
+        <>
+            <NavLink to="/" className="nav-link">
+                <li>Home</li>
+            </NavLink>
+            <NavLink to="/lost-and-found-items" className="nav-link">
+                <li>Lost & Found Items</li>
+            </NavLink>
+        </>
+    );
+
 
     return (
         <div className="navbar p-2 rounded-md bg-base-300 shadow-md">
@@ -40,8 +46,14 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/register' className="text-blue-700 underline font-medium">Register</Link>
-                <Link to='/signIn' className="btn ml-3 btn-primary btn-md px-6">Sign In</Link>
+                {/* LOG-OUT n PROFILE */}
+                <div>
+                    <Link className="text-blue-700 underline font-medium">Log Out</Link>
+                </div>
+                {/* LOGIN */}
+                <div>
+                    <Link to='/login' className="btn ml-3 btn-primary btn-sm px-6">Login</Link>
+                </div>
             </div>
         </div>
     );
