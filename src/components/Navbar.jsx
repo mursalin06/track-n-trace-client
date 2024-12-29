@@ -48,7 +48,7 @@ const Navbar = () => {
             <div className="navbar-end">
                 {/* LOG-OUT n PROFILE */}
                 <div>
-                    <Link className="text-blue-700 underline font-medium">Log Out</Link>
+                    <p className="text-blue-700 underline font-medium hover:text-cyan-700">Log Out</p>
                 </div>
                 {/* LOGIN */}
                 <div>
