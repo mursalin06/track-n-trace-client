@@ -10,9 +10,9 @@ const LostAndFoundItems = () => {
             </nav>
             <PageTitle title="Lost n Found items | Track n Trace"></PageTitle>
 
-<div className="min-h-screen">
+            <div className="min-h-screen">
                 Lost n found pages
-</div>            
+            </div>
             <footer>
                 <Footer></Footer>
             </footer>

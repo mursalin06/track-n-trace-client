@@ -6,6 +6,10 @@ import MainLayout from "../layouts/MainLayout";
 import LostAndFoundItems from "../pages/LostAndFoundItems";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import AddLostAndFoundItem from "../pages/ProtectedPages/AddLostAndFoundItem";
+import AllRecoveredItems from "../pages/ProtectedPages/AllRecoveredItems";
+import ManageMyItems from "../pages/ProtectedPages/ManageMyItems";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -30,7 +34,20 @@ const router = createBrowserRouter([
     {
         path:'/lost-and-found-items',
         element:<LostAndFoundItems></LostAndFoundItems>
-    }
+    },
+    {
+        path:'/add-lost-and-found-item',
+        element:<PrivateRoute><AddLostAndFoundItem></AddLostAndFoundItem></PrivateRoute>
+    },
+    {
+        path:'/all-recovered-items',
+        element:<PrivateRoute><AllRecoveredItems></AllRecoveredItems></PrivateRoute>
+    },
+    {
+        path:'/manage-my-items',
+        element:<PrivateRoute><ManageMyItems></ManageMyItems></PrivateRoute>
+    },
+
 ]);
 
 export default router;

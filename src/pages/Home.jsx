@@ -3,7 +3,10 @@ import PageTitle from "../components/PageTitle";
 
 const Home = () => {
     return (
-        <div className="min-h-screen">
+        <div
+        style={{
+            minHeight: "calc(100vh - 64px)",
+        }}>
             <PageTitle title="Home | Track n Trace"></PageTitle>
             <section>
                 <Banner></Banner>

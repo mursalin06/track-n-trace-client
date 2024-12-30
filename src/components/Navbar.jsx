@@ -14,34 +14,34 @@ const Navbar = () => {
                 <li>Home</li>
             </NavLink>
             <NavLink to="/lost-and-found-items" className="nav-link">
-                <li>Lost & Found Items</li>
+                <li>Lost and Found Items</li>
             </NavLink>
         </>
     );
 
     const handleLogOut = () => {
         logOut()
-        .then(() => {
-            console.log("Logged Out Successfully!");
-            Swal.fire({
-                title: "Good job!",
-                text: "Logged out successfully.",
-                icon: "success"
-              });
-        })
-        .catch((err)=>{
-            console.error(err,"error while logging out");
-            Swal.fire({
-                title: "Alas!",
-                text: "Failed to log out",
-                icon: "error"
-              });
-        })
+            .then(() => {
+                console.log("Logged Out Successfully!");
+                Swal.fire({
+                    title: "Good job!",
+                    text: "Logged out successfully.",
+                    icon: "success"
+                });
+            })
+            .catch((err) => {
+                console.error(err, "error while logging out");
+                Swal.fire({
+                    title: "Alas!",
+                    text: "Failed to log out",
+                    icon: "error"
+                });
+            })
     }
 
 
     return (
-        <div className="navbar rounded-md bg-base-300 shadow-md px-4">
+        <div className="navbar bg-base-300 shadow-md px-2 rounded-lg w-full">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost pl-0 lg:hidden">
@@ -60,11 +60,11 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[10] mt-3 w-52 p-2 shadow">
                         {links}
                     </ul>
                 </div>
-                <Link to='/' className="text-xl font-bold text-blue-700 italic">Track n Trace</Link>
+                <Link to='/' className="text-md md:text-xl font-bold text-blue-700 italic">Track n Trace</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -73,14 +73,59 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 {/* LOG-OUT and LOGIN */}
-                {user ? <div className="flex items-center gap-5">
-                    <p onClick={handleLogOut} className="text-blue-700 underline font-medium hover:text-cyan-700">Log Out</p>
-                    <span className="tooltip tooltip-bottom" data-tip={user.displayName}>
-                        <img className="w-12 h-12 rounded-full" src={user.photoURL} alt="" />
-                    </span>
-                </div> : <div>
-                    <Link to='/login' className="btn ml-3 btn-primary btn-sm px-6">Login</Link>
-                </div>}
+                {user ? (
+                    <div className="dropdown dropdown-end flex justify-center items-center gap-3 z-10">
+                        <div>
+                            <button onClick={handleLogOut} className=" btn btn-error btn-sm text-white">Log Out</button>
+                        </div>
+                        <div>
+                            <label
+                                tabIndex={0}
+                                className="flex items-center gap-2 cursor-pointer"
+                            >
+                                <span className="tooltip tooltip-bottom z-50" data-tip={user.displayName}>
+                                    <img
+                                        className="w-12 h-12 rounded-full"
+                                        src={user.photoURL}
+                                        alt="User Profile"
+                                    />
+                                </span>
+                            </label>
+                            <ul
+                                tabIndex={0}
+                                className="dropdown-content menu pl-6 py-6 space-y-5 shadow bg-base-100 rounded-box w-56"
+                            >
+                                <NavLink to="/add-lost-and-found-item" className="nav-link">
+                                    <li>Add Lost and Found Item</li>
+                                </NavLink>
+                                
+                                {/* <li>
+                                    <Link to="/profile">Add Lost & Found Item</Link>
+                                </li> */}
+                                <NavLink to="/all-recovered-items" className="nav-link">
+                                    <li>All Recovered Items</li>
+                                </NavLink>
+                                {/* <li>
+                                    <Link to="/settings">All Recovered Items</Link>
+                                </li> */}
+                                 <NavLink to="/manage-my-items" className="nav-link">
+                                    <li>Manage My Items</li>
+                                </NavLink>
+                                {/* <li>
+                                    <Link to="/settings">Manage My Items</Link>
+                                </li> */}
+                            </ul>
+                        </div>
+
+
+                    </div>
+                ) : (
+                    <div>
+                        <Link to="/login" className="btn ml-3 btn-primary btn-sm px-6">
+                            Login
+                        </Link>
+                    </div>
+                )}
             </div>
         </div>
     );

@@ -14,7 +14,11 @@
 .nav-link.active {
     color: blue;
 }
-
+/* nav{
+    overflow-x: hidden;
+    overflow-y: hidden;
+} */
 html{
     overflow-y: scroll;
+    overflow-x: hidden;
 }

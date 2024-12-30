@@ -5,7 +5,7 @@ import 'swiper/css';
 
 const Banner = () => {
     return (
-        <div>
+        <div className="">
             {/* SWIPER */}
             <div>
                 <Swiper
@@ -28,9 +28,9 @@ const Banner = () => {
                             }}>
                             <div className="hero-overlay bg-opacity-60"></div>
                             <div className="hero-content text-neutral-content text-center flex justify-start items-end absolute bottom-0 left-0 mb-6 ml-6">
-                                <div className="max-w-lg bg-white/10 backdrop-blur-md p-6 rounded-lg shadow-lg ">
-                                    <h1 className="mb-5 text-4xl font-bold">Welcome to Track n Trace</h1>
-                                    <p className="mb-5">
+                                <div className="max-w-lg bg-white/10 backdrop-blur-md p-6 shadow-lg ">
+                                    <h1 className="mb-5 text-2xl md:text-4xl font-bold">Welcome to Track n Trace</h1>
+                                    <p className="mb-5 text-lg">
                                         Helping you find what you've lost!
                                     </p>
                                 </div>
@@ -46,9 +46,9 @@ const Banner = () => {
                             }}>
                             <div className="hero-overlay bg-opacity-60"></div>
                             <div className="hero-content text-neutral-content text-center flex justify-start items-end absolute bottom-0 left-0 mb-6 ml-6">
-                                <div className="max-w-lg bg-white/10 backdrop-blur-md p-6 rounded-lg shadow-lg">
-                                    <h1 className="mb-5 text-4xl font-bold">Tracking Your Lost Pet – We're on the Case!</h1>
-                                    <p className="mb-5">
+                                <div className="max-w-lg bg-white/10 backdrop-blur-md p-6 shadow-lg">
+                                    <h1 className="mb-5 text-2xl md:text-4xl font-bold">Tracking Your Lost Pet – We're on the Case!</h1>
+                                    <p className="mb-5 text-lg">
                                         Lost a pet ? Let us help you reconnect!
                                     </p>
                                 </div>
@@ -64,9 +64,9 @@ const Banner = () => {
                             }}>
                             <div className="hero-overlay bg-opacity-60"></div>
                             <div className="hero-content text-neutral-content text-center flex justify-start items-end absolute bottom-0 left-0 mb-6 ml-6">
-                                <div className="max-w-lg bg-white/10 backdrop-blur-md p-6 rounded-lg shadow-lg">
-                                    <h1 className="mb-5 text-4xl font-bold">You've lost something ?</h1>
-                                    <p className="mb-5">
+                                <div className="max-w-lg bg-white/10 backdrop-blur-md p-6 shadow-lg">
+                                    <h1 className="mb-5 text-2xl md:text-4xl font-bold">You've lost something ?</h1>
+                                    <p className="mb-5 text-lg">
                                         Let's find your lost puzzle together !
                                     </p>
                                 </div>
