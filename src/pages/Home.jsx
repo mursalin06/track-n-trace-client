@@ -1,5 +1,6 @@
 import Banner from "../components/Banner";
 import FAQ from "../components/FAQ";
+import NewsLetter from "../components/NewsLetter";
 import PageTitle from "../components/PageTitle";
 
 const Home = () => {
@@ -12,8 +13,11 @@ const Home = () => {
             <section>
                 <Banner></Banner>
             </section>
-            <section>
+            <section className="bg-base-300">
                 <FAQ></FAQ>
+            </section>
+            <section>
+                <NewsLetter></NewsLetter>
             </section>
         </div>
     );

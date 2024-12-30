@@ -1,8 +1,8 @@
 const FAQ = () => {
     return (
-        <section className="flex justify-center items-center flex-col h-[600px]">
-            <h2 className="text-4xl font-bold pb-10 text-blue-700">Frequently Asked Questions</h2>
-            <div className="join join-vertical w-full mx-10 md:w-1/2 md:mx-auto ">
+        <section className="flex justify-center items-center flex-col h-[700px]">
+            <h2 className="text-2xl md:text-4xl font-bold pb-10 text-center text-blue-700">Frequently Asked Questions</h2>
+            <div className="join join-vertical w-full mx-10 md:w-1/2 md:mx-auto border border-blue-300">
                 <div className="collapse collapse-arrow join-item border-base-300 border ">
                     <input type="radio" name="my-accordion-4" defaultChecked />
                     <div className="collapse-title text-xl font-medium ">How do I post a lost or found item on Track n Trace?</div>
