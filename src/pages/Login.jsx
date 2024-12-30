@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import Swal from "sweetalert2";
+import PageTitle from "../components/PageTitle";
 
 const Login = () => {
 
@@ -68,6 +69,7 @@ const Login = () => {
 
     return (
         <div className="hero bg-base-200 min-h-screen">
+            <PageTitle title="Login | Track n Trace"></PageTitle>
             <div className="card bg-base-100 w-full mx-5 md:w-1/3 shadow-2xl">
                 <h2 className="text-2xl font-bold text-center pt-6">Login</h2>
                 <form onSubmit={handleLogin} className="card-body">

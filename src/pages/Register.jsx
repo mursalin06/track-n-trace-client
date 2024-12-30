@@ -5,6 +5,7 @@ import { updateProfile } from "firebase/auth";
 import { Bounce, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
+import PageTitle from "../components/PageTitle";
 
 const Register = () => {
     const navigate = useNavigate();
@@ -66,6 +67,7 @@ const Register = () => {
 
     return (
         <div>
+            <PageTitle title="Register | Track n Trace"></PageTitle>
             <div className="hero bg-base-200 min-h-screen">
                 <div className="card bg-base-100 w-full mx-5 md:w-10/12 my-6 lg:w-1/3 shadow-2xl">
                     <h2 className="text-2xl font-bold text-center pt-6">Register</h2>
