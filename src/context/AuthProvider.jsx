@@ -10,29 +10,33 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     // create an user
-    const createUser = (email, password) => {
+    const createUser = async(email, password) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password);
+        return createUserWithEmailAndPassword(auth, email, password)
+        .finally(() => setLoading(false));
     }
 
     // login user
-    const login = (email, password) => {
+    const login = async(email, password) => {
         setLoading(true);
-        return signInWithEmailAndPassword(auth, email, password);
+        return signInWithEmailAndPassword(auth, email, password)
+        .finally(() => setLoading(false));
     }
 
     // sign out
-    const logOut = () => { 
+    const logOut = async() => { 
         setLoading(true);
-        return signOut(auth);
+        return signOut(auth)
+        .finally(() => setLoading(false));
     }
 
     // google sign in
     const provider = new GoogleAuthProvider();
 
-    const googleSignIn = () => {
+    const googleSignIn = async() => {
         setLoading(true);
         return signInWithPopup(auth, provider)
+        .finally(() => setLoading(false));
     }
 
     // observer
@@ -41,6 +45,7 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             if (currentUser) {
                 setUser(currentUser);
+                setLoading(false)
             } else {
                 setUser(null);
             }
