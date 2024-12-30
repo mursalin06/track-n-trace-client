@@ -18,10 +18,6 @@ const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path:'/lost-and-found-items',
-                element:<LostAndFoundItems></LostAndFoundItems>
-            },
-            {
                 path:'/login',
                 element:<Login></Login>
             },
@@ -31,6 +27,10 @@ const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path:'/lost-and-found-items',
+        element:<LostAndFoundItems></LostAndFoundItems>
+    }
 ]);
 
 export default router;

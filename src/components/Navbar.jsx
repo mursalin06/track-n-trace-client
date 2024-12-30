@@ -64,7 +64,7 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <Link to='/' className="text-xl font-bold">Track n Trace</Link>
+                <Link to='/' className="text-xl font-bold text-blue-700 italic">Track n Trace</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
