@@ -2,27 +2,69 @@ import DatePicker from "react-datepicker";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import PageTitle from "../../components/PageTitle";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import AuthContext from "../../context/AuthContext";
+import Swal from "sweetalert2";
 
 const AddLostAndFoundItem = () => {
 
+    const { user } = useContext(AuthContext);
     const [startDate, setStartDate] = useState(new Date());
 
+    const formattedDate = startDate.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+    });
 
     const handleAddItems = (e) => {
         e.preventDefault();
         const form = e.target;
 
         const postType = form.type.value;
-        const thumbnail = form.thumbnail.value;
+        const thumbnailFile = form.thumbnail.files[0];
+        // const thumbnailPreview = URL.createObjectURL(thumbnailFile);
         const title = form.title.value;
         const description = form.description.value;
         const category = form.category.value;
         const location = form.location.value;
-        const contact = form.contact.value;
+        const contactDisplayName = form.contactName.value;
+        const contactEmail = form.contactEmail.value;
 
-        const newItem = { postType, thumbnail, title, description, category, location, startDate, contact };
-        console.log(newItem);
+
+        const reader = new FileReader();
+        reader.readAsDataURL(thumbnailFile);
+        reader.onloadend = () => {
+            const base64Data = reader.result;
+            const newItem = { postType, thumbnailData: base64Data, title, description, category, location, formattedDate, contactDisplayName, contactEmail };
+            // console.log(newItem)
+            //
+            fetch('http://localhost:3000/add-items', {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(newItem)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    Swal.fire({
+                        title: "Good job!",
+                        text: "Item added to the DB successfully!",
+                        icon: "success"
+                    });
+                    form.reset();
+                })
+                .catch(err => {
+                    Swal.fire({
+                        title: "Opps!",
+                        text: "Something went wrong!",
+                        icon: "error"
+                    });
+                })
+            // 
+
+        };
     }
 
     return (
@@ -51,7 +93,7 @@ const AddLostAndFoundItem = () => {
                             <label className="label">
                                 <span className="label-text">Thumbnail</span>
                             </label>
-                            <input type="file" name="thumbnail" className="file-input file-input-bordered w-full" />
+                            <input type="file" name="thumbnail" accept="image/*" className="file-input file-input-bordered w-full" />
                         </div>
                         {/* TITLE */}
                         <div className="form-control">
@@ -100,7 +142,14 @@ const AddLostAndFoundItem = () => {
                             <label className="label">
                                 <span className="label-text">Contact Information</span>
                             </label>
-                            <input type="text" name="contact" placeholder="contact information" className="input input-bordered" required />
+                            <input type="text" name="contactName" value={user?.displayName || ""} disabled placeholder="contact information" className="input input-bordered" required />
+                            <input
+                                type="email"
+                                value={user?.email || ''}
+                                disabled
+                                name="contactEmail"
+                                className="input input-bordered mt-2"
+                            />
                         </div>
                         {/*  */}
                         <div className="form-control mt-6">
