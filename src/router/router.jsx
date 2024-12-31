@@ -22,30 +22,30 @@ const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path:'/login',
-                element:<Login></Login>
+                path: '/login',
+                element: <Login></Login>
             },
             {
-                path:'/register',
-                element:<Register></Register>
+                path: '/register',
+                element: <Register></Register>
             }
         ]
     },
     {
-        path:'/lost-and-found-items',
-        element:<LostAndFoundItems></LostAndFoundItems>
+        path: '/lost-and-found-items',
+        element: <LostAndFoundItems></LostAndFoundItems>
     },
     {
-        path:'/add-lost-and-found-item',
-        element:<PrivateRoute><AddLostAndFoundItem></AddLostAndFoundItem></PrivateRoute>
+        path: '/add-items',
+        element: <PrivateRoute><AddLostAndFoundItem></AddLostAndFoundItem></PrivateRoute>
     },
     {
-        path:'/all-recovered-items',
-        element:<PrivateRoute><AllRecoveredItems></AllRecoveredItems></PrivateRoute>
+        path: '/all-recovered-items',
+        element: <PrivateRoute><AllRecoveredItems></AllRecoveredItems></PrivateRoute>
     },
     {
-        path:'/manage-my-items',
-        element:<PrivateRoute><ManageMyItems></ManageMyItems></PrivateRoute>
+        path: '/manage-my-items',
+        element: <PrivateRoute><ManageMyItems></ManageMyItems></PrivateRoute>
     },
 
 ]);

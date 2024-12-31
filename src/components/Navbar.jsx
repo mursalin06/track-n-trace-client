@@ -95,10 +95,10 @@ const Navbar = () => {
                                 tabIndex={0}
                                 className="dropdown-content menu pl-6 py-6 space-y-5 shadow bg-base-100 rounded-box w-56"
                             >
-                                <NavLink to="/add-lost-and-found-item" className="nav-link">
+                                <NavLink to="/add-items" className="nav-link">
                                     <li>Add Lost and Found Item</li>
                                 </NavLink>
-                                
+
                                 {/* <li>
                                     <Link to="/profile">Add Lost & Found Item</Link>
                                 </li> */}
@@ -108,7 +108,7 @@ const Navbar = () => {
                                 {/* <li>
                                     <Link to="/settings">All Recovered Items</Link>
                                 </li> */}
-                                 <NavLink to="/manage-my-items" className="nav-link">
+                                <NavLink to="/manage-my-items" className="nav-link">
                                     <li>Manage My Items</li>
                                 </NavLink>
                                 {/* <li>
