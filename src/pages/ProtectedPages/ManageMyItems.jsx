@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import PageTitle from "../../components/PageTitle";
@@ -7,9 +7,17 @@ import AuthContext from "../../context/AuthContext";
 
 const ManageMyItems = () => {
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
     const postedItems = useLoaderData();
     const myPostedItems = postedItems.filter(item => item.contactEmail === user?.email);
     // console.log(postedItems, myPostedItems)  
+
+
+    const handleUpdate = (id) => {
+        if(!user){
+            navigate('/login')
+        }
+    }
     return (
         <div>
             <PageTitle title="Manage my items | Track n Trace"></PageTitle>
@@ -53,8 +61,8 @@ const ManageMyItems = () => {
                                     <td>{postedItem.category}</td>
                                     <th>
                                        <div className="flex gap-2">
-                                       <button className="btn text-white btn-success btn-sm">Update</button>
-                                       <button className="btn text-white btn-error btn-sm ml-3">Delete</button>
+                                      <Link to={`/updateItems/${postedItem._id}`}><button onClick={()=>handleUpdate(postedItem._id)} className="btn text-white btn-success btn-sm">Update</button></Link>
+                                      <Link><button className="btn text-white btn-error btn-sm ml-3">Delete</button></Link>
                                        </div>
                                     </th>
                                 </tr>)

@@ -11,6 +11,7 @@ import AllRecoveredItems from "../pages/ProtectedPages/AllRecoveredItems";
 import ManageMyItems from "../pages/ProtectedPages/ManageMyItems";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import PostDetails from "../pages/PostDetails";
+import UpdatePost from "../pages/UpdatePost";
 
 const router = createBrowserRouter([
     {
@@ -53,6 +54,11 @@ const router = createBrowserRouter([
     {
         path:'/item/:id',
         element:<PrivateRoute><PostDetails></PostDetails></PrivateRoute>,
+        loader: ({params})=> fetch(`http://localhost:3000/all-items/${params.id}`)
+    },
+    {
+        path:'/updateItems/:id',
+        element: <PrivateRoute><UpdatePost></UpdatePost></PrivateRoute>,
         loader: ({params})=> fetch(`http://localhost:3000/all-items/${params.id}`)
     }
 ]);
