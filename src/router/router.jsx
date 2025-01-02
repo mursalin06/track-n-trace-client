@@ -10,6 +10,7 @@ import AddLostAndFoundItem from "../pages/ProtectedPages/AddLostAndFoundItem";
 import AllRecoveredItems from "../pages/ProtectedPages/AllRecoveredItems";
 import ManageMyItems from "../pages/ProtectedPages/ManageMyItems";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import PostDetails from "../pages/PostDetails";
 
 const router = createBrowserRouter([
     {
@@ -48,7 +49,11 @@ const router = createBrowserRouter([
         path: '/manage-my-items',
         element: <PrivateRoute><ManageMyItems></ManageMyItems></PrivateRoute>
     },
-
+    {
+        path:'/item/:id',
+        element:<PostDetails></PostDetails>,
+        loader: ({params})=> fetch(`http://localhost:3000/all-items/${params.id}`)
+    }
 ]);
 
 export default router;
