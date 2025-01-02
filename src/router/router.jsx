@@ -44,7 +44,8 @@ const router = createBrowserRouter([
     },
     {
         path: '/all-recovered-items',
-        element: <PrivateRoute><AllRecoveredItems></AllRecoveredItems></PrivateRoute>
+        element: <PrivateRoute><AllRecoveredItems></AllRecoveredItems></PrivateRoute>,
+        loader: ()=> fetch('http://localhost:3000/recovered-items')
     },
     {
         path: '/manage-my-items',
