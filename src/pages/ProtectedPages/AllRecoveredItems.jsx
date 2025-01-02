@@ -46,7 +46,14 @@ const AllRecoveredItems = () => {
                                     <td>
                                         {recoveredItem.recoveredLocation}
                                     </td>
-                                    <td>{recoveredItem.recoveryDate}</td>
+                                    <td>{new Date(recoveredItem.recoveryDate).toLocaleString('en-US', {
+                                        year: 'numeric',
+                                        month: 'long',
+                                        day: 'numeric', 
+                                        hour: 'numeric',
+                                        minute: 'numeric',
+                                        hour12: true
+                                    })}</td>
                                     <td>{recoveredItem.recoveredBy.email}</td>
                                 </tr>)
                             }
