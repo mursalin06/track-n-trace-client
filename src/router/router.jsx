@@ -12,12 +12,13 @@ import ManageMyItems from "../pages/ProtectedPages/ManageMyItems";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import PostDetails from "../pages/PostDetails";
 import UpdatePost from "../pages/UpdatePost";
+import Error from "../components/Error";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout></MainLayout>,
-        errorElement: <div>404, Route not found!</div>,
+        // errorElement: <Error></Error>,
         children: [
             {
                 path: '/',
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
         path:'/updateItems/:id',
         element: <PrivateRoute><UpdatePost></UpdatePost></PrivateRoute>,
         loader: ({params})=> fetch(`http://localhost:3000/all-items/${params.id}`)
+    },
+    {
+        path:'*',
+        element:<Error></Error>
     }
 ]);
 
