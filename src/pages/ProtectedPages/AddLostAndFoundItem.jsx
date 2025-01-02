@@ -22,51 +22,41 @@ const AddLostAndFoundItem = () => {
         const form = e.target;
 
         const postType = form.type.value;
-        const thumbnailFile = form.thumbnail.files[0];
-        // const thumbnailPreview = URL.createObjectURL(thumbnailFile);
+        const thumbnail = form.thumbnail.value;
         const title = form.title.value;
         const description = form.description.value;
         const category = form.category.value;
         const location = form.location.value;
         const contactDisplayName = form.contactName.value;
         const contactEmail = form.contactEmail.value;
+        const newItem = { postType, thumbnail, title, description, category, location, formattedDate, contactDisplayName, contactEmail };
 
-
-        const reader = new FileReader();
-        reader.readAsDataURL(thumbnailFile);
-        reader.onloadend = () => {
-            const base64Data = reader.result;
-            const newItem = { postType, thumbnailData: base64Data, title, description, category, location, formattedDate, contactDisplayName, contactEmail };
-            // console.log(newItem)
-            //
-            fetch('http://localhost:3000/add-items', {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json"
-                },
-                body: JSON.stringify(newItem)
+        fetch('http://localhost:3000/all-items', {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(newItem)
+        })
+            .then(res => res.json())
+            .then(data => {
+                Swal.fire({
+                    title: "Good job!",
+                    text: "Item added to the DB successfully!",
+                    icon: "success"
+                });
+                form.reset();
             })
-                .then(res => res.json())
-                .then(data => {
-                    Swal.fire({
-                        title: "Good job!",
-                        text: "Item added to the DB successfully!",
-                        icon: "success"
-                    });
-                    form.reset();
-                })
-                .catch(err => {
-                    Swal.fire({
-                        title: "Opps!",
-                        text: "Something went wrong!",
-                        icon: "error"
-                    });
-                })
-            // 
+            .catch(err => {
+                Swal.fire({
+                    title: "Opps!",
+                    text: "Something went wrong!",
+                    icon: "error"
+                });
+            })
+        // 
 
-        };
-    }
-
+    };
     return (
         <div>
             <PageTitle title="Add lost and found item | Track n Trace"></PageTitle>
@@ -93,7 +83,8 @@ const AddLostAndFoundItem = () => {
                             <label className="label">
                                 <span className="label-text">Thumbnail</span>
                             </label>
-                            <input type="file" name="thumbnail" accept="image/*" className="file-input file-input-bordered w-full" />
+                            {/* <input type="file" name="thumbnail" accept="image/*" className="file-input file-input-bordered w-full" /> */}
+                            <input type="text" name="thumbnail" placeholder="thumbnail" className="input input-bordered" required />
                         </div>
                         {/* TITLE */}
                         <div className="form-control">
