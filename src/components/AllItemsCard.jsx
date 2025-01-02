@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const AllItemsCard = ({ item }) => {
-    const { _id ,thumbnail, title, location, category } = item;
+    const { _id ,thumbnail, title, location, category, postType } = item;
 
     const handleViewDetails = (id) => {
         console.log(id, "CLICKED")
@@ -15,8 +15,15 @@ const AllItemsCard = ({ item }) => {
                 </figure>
                 <div className="card-body">
                     <h2 className="card-title">Title :  {title}</h2>
-                    <p>Location :  {location}</p>
-                    <p>Item Category :  {category}</p>
+                    <div className="flex justify-between ">
+                        <div>
+                        <p>Location :  {location}</p>
+                        <p>Item Category :  {category}</p>
+                        </div>
+                        <div>
+                            <div className="badge badge-outline">{postType}</div>
+                        </div>
+                    </div>
                     <div className="card-actions">
                         <Link to={`/item/${_id}`}>
                         <button onClick={()=>handleViewDetails(_id)} className="btn btn-primary btn-sm">View Details</button>
