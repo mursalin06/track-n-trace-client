@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
-
-const AllItemsCard = ({ item }) => {
+import { Link, useNavigate } from "react-router-dom";
+const AllItemsCard = ({ item, user }) => {
+    const navigate = useNavigate();
     const { _id, thumbnail, title, location, category, postType, status } = item;
-
-    const handleViewDetails = (id) => {
-        console.log(id, "CLICKED")
+    const handleViewDetails = () => {
+        if(!user){
+            navigate('/login')
+        }
     }
     return (
         <div className="flex justify-center items-center">
@@ -26,7 +27,7 @@ const AllItemsCard = ({ item }) => {
                     </div>
                     <div className="card-actions items-center gap-20">
                         <Link to={`/item/${_id}`}>
-                            <button onClick={() => handleViewDetails(_id)} className="btn btn-primary btn-sm">View Details</button>
+                            <button onClick={handleViewDetails} className="btn btn-primary btn-sm">View Details</button>
                         </Link>
                         <p><span className="text-md font-bold">Status :  </span>{status === "recovered" ? "recovered" : "not recovered yet"}</p>
                     </div>

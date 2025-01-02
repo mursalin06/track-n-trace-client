@@ -47,11 +47,12 @@ const router = createBrowserRouter([
     },
     {
         path: '/manage-my-items',
-        element: <PrivateRoute><ManageMyItems></ManageMyItems></PrivateRoute>
+        element: <PrivateRoute><ManageMyItems></ManageMyItems></PrivateRoute>,
+        loader: ()=>fetch('http://localhost:3000/all-items')
     },
     {
         path:'/item/:id',
-        element:<PostDetails></PostDetails>,
+        element:<PrivateRoute><PostDetails></PostDetails></PrivateRoute>,
         loader: ({params})=> fetch(`http://localhost:3000/all-items/${params.id}`)
     }
 ]);

@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { useContext, useState } from "react";
 import AuthContext from "../context/AuthContext";
 import DatePicker from "react-datepicker";
+import PageTitle from "../components/PageTitle";
 
 const PostDetails = () => {
     const { user } = useContext(AuthContext);
@@ -82,6 +83,7 @@ const PostDetails = () => {
 
     return (
         <div>
+            <PageTitle title="Details | Track n Trace"></PageTitle>
             <nav>
                 <Navbar></Navbar>
             </nav>
@@ -105,7 +107,7 @@ const PostDetails = () => {
                                 <ul><span className="text-md font-bold">Contact :</span>  <li>
                                     <span className="font-medium">Name -</span>  {contactDisplayName}</li>
                                     <li><span span className="font-medium">Email -</span>  {contactEmail}</li></ul>
-                                {/* <p><span className="text-md font-bold">Status :  </span>{status === "recovered" ? "recovered": "not recovered yet" }</p> */}
+                                <p><span className="text-md font-bold">Status :  </span>{status === "recovered" ? "recovered": "not recovered yet" }</p>
                             </div>
                             <div
                                 onClick={handleRecovery}
