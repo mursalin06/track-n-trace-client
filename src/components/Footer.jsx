@@ -9,13 +9,13 @@ const Footer = () => {
                     <img className="w-[50px] h-[50px]" src={footerImage} alt="" />
                     <p>
                         <span className="font-bold text-lg">
-                        Track n Trace Ltd.
+                            Track n Trace Ltd.
                         </span>
                         <br />
                         Track your losses. Trace your belongings !
                     </p>
                     <p className="flex gap-3 items-center"><FaLocationDot></FaLocationDot> <span>Level-4, 34, Awal Centre, Banani, Dhaka</span></p>
-                    <p  className="flex gap-3 items-center"><FiPhoneCall></FiPhoneCall> <span>01322810867 , 01332502004</span></p>
+                    <p className="flex gap-3 items-center"><FiPhoneCall></FiPhoneCall> <span>01322810867 , 01332502004</span></p>
                 </aside>
                 <nav>
                     <h6 className="footer-title">Social</h6>
