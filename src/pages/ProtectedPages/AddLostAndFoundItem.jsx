@@ -31,7 +31,7 @@ const AddLostAndFoundItem = () => {
         const contactEmail = form.contactEmail.value;
         const newItem = { postType, thumbnail, title, description, category, location, formattedDate, contactDisplayName, contactEmail };
 
-        fetch('http://localhost:3000/all-items', {
+        fetch('https://track-n-trace-server.vercel.app/all-items', {
             method: "POST",
             headers: {
                 "content-type": "application/json"

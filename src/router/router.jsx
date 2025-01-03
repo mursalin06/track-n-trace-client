@@ -36,7 +36,7 @@ const router = createBrowserRouter([
     {
         path: '/lost-and-found-items',
         element: <LostAndFoundItems></LostAndFoundItems>,
-        loader: () => fetch('http://localhost:3000/all-items')
+        loader: () => fetch('https://track-n-trace-server.vercel.app/all-items')
     },
     {
         path: '/add-items',
@@ -45,22 +45,22 @@ const router = createBrowserRouter([
     {
         path: '/all-recovered-items',
         element: <PrivateRoute><AllRecoveredItems></AllRecoveredItems></PrivateRoute>,
-        loader: ()=> fetch('http://localhost:3000/recovered-items')
+        loader: ()=> fetch('https://track-n-trace-server.vercel.app/recovered-items')
     },
     {
         path: '/manage-my-items',
         element: <PrivateRoute><ManageMyItems></ManageMyItems></PrivateRoute>,
-        loader: ()=>fetch('http://localhost:3000/all-items')
+        loader: ()=>fetch('https://track-n-trace-server.vercel.app/all-items')
     },
     {
         path:'/item/:id',
         element:<PrivateRoute><PostDetails></PostDetails></PrivateRoute>,
-        loader: ({params})=> fetch(`http://localhost:3000/all-items/${params.id}`)
+        loader: ({params})=> fetch(`https://track-n-trace-server.vercel.app/all-items/${params.id}`)
     },
     {
         path:'/updateItems/:id',
         element: <PrivateRoute><UpdatePost></UpdatePost></PrivateRoute>,
-        loader: ({params})=> fetch(`http://localhost:3000/all-items/${params.id}`)
+        loader: ({params})=> fetch(`https://track-n-trace-server.vercel.app/all-items/${params.id}`)
     },
     {
         path:'*',

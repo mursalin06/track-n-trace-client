@@ -32,7 +32,7 @@ const UpdatePost = () => {
         const updatedItem = { postType, thumbnail, title, description, category, location, formattedDate, contactDisplayName, contactEmail };
         // console.log(updatedItem)
 
-        fetch(`http://localhost:3000/all-items/${data._id}`, {
+        fetch(`https://track-n-trace-server.vercel.app/all-items/${data._id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

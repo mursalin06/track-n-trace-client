@@ -34,7 +34,7 @@ const ManageMyItems = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 setLoading(true);
-                fetch(`http://localhost:3000/all-items/${_id}`, {
+                fetch(`https://track-n-trace-server.vercel.app/all-items/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
