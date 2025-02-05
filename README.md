@@ -1,47 +1,48 @@
-# Project name : "TRACK N TRACE"
+# Track-N-Trace Client
 
-# Live url : https://track-n-trace-74063.web.app
+## 📌 Overview
+**Track-N-Trace** is a **Lost and Found Website** designed to connect individuals who have lost personal belongings with those who may have found them. Users can report lost items, browse found items, and interact to recover their belongings. This project provides practical experience in building full-stack applications, user authentication, file uploads, database management, and API integration.
 
-# Purpose : 
+## 📑 Table of Contents
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Environment Variables](#environment-variables)
+- [Scripts](#scripts)
+- [Contributing](#contributing)
+- [License](#license)
 
-- "Track n Trace" is a platform connecting people to recover lost belongings by reporting or browsing lost and found items. It provides practical solutions for reclaiming possessions while showcasing full-stack development skills like authentication, file uploads, and database management.
+---
 
-# Key features :
+## ✨ Features
+- Report lost and found items
+- Search and filter reported items
+- User authentication (Firebase)
+- Image uploads for lost and found items
+- Real-time updates and notifications (React Toastify)
+- Interactive UI with Tailwind CSS & DaisyUI
 
-1. Authentication System: 
- Users can log in using email/password or Google, with password validation and toast notifications for success or error messages.
+---
 
-2. Home Page: 
- Features a banner slider, latest lost and found items section, and interactive animations to engage users.
+## 🛠 Tech Stack
+- **Frontend:** React, React Router, React Icons, React Datepicker, Swiper
+- **State Management & Utilities:** LocalForage, Match-Sorter, Sort-By
+- **Backend Services:** Firebase (Authentication, Firestore, Storage)
+- **Styling:** Tailwind CSS, DaisyUI
+- **Build Tool:** Vite
+- **Linting & Formatting:** ESLint
 
-3. Add Lost & Found Item Page: 
- Users can submit posts with details like title, description, category, and location.
+---
 
-4. Lost & Found Items Page: 
- Displays all posts in card format with search functionality to filter by title or location.
+## ⚙ Installation
 
-5. Post Details Page: 
- Provides detailed information for each post and a button to mark items as recovered, with a modal for additional details.
+### Prerequisites
+Ensure you have the following installed:
+- **Node.js** (Latest LTS recommended)
+- **npm** or **yarn**
 
-6. Manage My Items Page: 
- Displays user-added posts in a table format with options to update or delete them.
-
-7. All Recovered Items Page: 
- Shows recovered posts by the logged-in user in a table format, displaying meaningful messages when no data is available.
-
-8. Other features : 
- Dynamic Titles, 404 Page, Spinner, Toast Notifications, etc.
-
-
-# NPM packages used :
-
-1. firebase: Firebase SDK for authentication, database, and other services.
-2. react: A JavaScript library for building user interfaces.
-3. react-datepicker: A datepicker component for React.
-4. react-dom: React package for interacting with the DOM.
-5. react-router-dom: Library for routing and navigation in React apps.
-6. react-toastify: A library for displaying toast notifications in React.
-7. sweetalert2: A library for creating beautiful and responsive alerts.
-8. swiper: A modern mobile touch slider with hardware accelerated transitions.
-9. react-icons: A library for including popular icons from various icon sets in React applications, providing scalable and customizable icons.
-
+### Steps
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/track-n-trace-client.git

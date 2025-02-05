@@ -7,7 +7,7 @@ import PageTitle from "../components/PageTitle";
 const Login = () => {
 
     const navigate = useNavigate();
-    const { login, setUser, googleSignIn } = useContext(AuthContext);
+    const { login, setUser, googleSignIn, setLoading } = useContext(AuthContext);
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -17,7 +17,7 @@ const Login = () => {
         const password = form.password.value;
         // const LoginInfo = { email, password }
         // console.log(LoginInfo);
-
+        setLoading(true)
         login(email, password)
             .then(res => {
                 const user = res.user;
@@ -34,6 +34,7 @@ const Login = () => {
 
             })
             .catch(error => {
+                setLoading(false)
                 console.log("error while logging in", error);
                 Swal.fire({
                     title: "Opps!",
@@ -41,13 +42,18 @@ const Login = () => {
                     icon: "error"
                 });
             })
+            .finally(() => {
+                setLoading(false);
+            });
     }
 
     const handleGoogleSignIn = () => {
+        setLoading(true)
         googleSignIn()
             .then((result) => {
                 const user = result.user;
                 setUser(user);
+                // setLoading(false)
                 if (user) {
                     Swal.fire({
                         title: "Good job",
@@ -58,13 +64,16 @@ const Login = () => {
                 }
             })
             .catch((error) => {
+                setLoading(false)
                 console.error(error, "Error occurred while signing in with google");
                 Swal.fire({
                     title: "Opps!",
                     text: "Password or email is incorrect. Try again",
                     icon: "error"
                 });
-            })
+            }).finally(() => {
+                setLoading(false);
+            });
     }
 
     return (
